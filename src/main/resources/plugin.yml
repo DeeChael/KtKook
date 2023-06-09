@@ -1,0 +1,5 @@
+name: KtKook
+version: 1.00.0
+api-version: 0.49.0
+authors: ["DeeChael"]
+main: net.deechael.ktkook.internel.KtKookBootstrap

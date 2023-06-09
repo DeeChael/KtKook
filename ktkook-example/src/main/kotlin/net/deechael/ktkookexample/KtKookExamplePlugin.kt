@@ -1,42 +1,25 @@
-# KtKook
-为KookBC提供了Kotlin高级功能
-## 快速上手
-**!!** 想要使用本插件的功能，请使用Kotlin进行开发，并将插件中的 `plugin.yml` 重命名为 `kt-plugin.yml`，并在依赖项中标明KtKook
-```yaml
-name: Example
-version: 1.0.0
-api-version: 0.49.0
-authors: ["DeeChael"]
-main: net.deechael.example.ExampleKtPlugin
-depend: ["KtKook"]
-```
-首先，本插件提供了对Kotlin的object class的支持：
-```kotlin
-object ExampleKtPlugin: KtPlugin() {
+package net.deechael.ktkookexample
+
+import net.deechael.ktkook.card.ActionGroup
+import net.deechael.ktkook.card.Context
+import net.deechael.ktkook.card.Divider
+import net.deechael.ktkook.card.Header
+import net.deechael.ktkook.card.MultipleCardComponent
+import net.deechael.ktkook.card.Section
+import net.deechael.ktkook.command.Executor
+import net.deechael.ktkook.command.Literal
+import net.deechael.ktkook.command.UserExecutor
+import net.deechael.ktkook.plugin.KtPlugin
+import snw.jkook.message.component.card.MultipleCardComponent
+import snw.jkook.message.component.card.Theme
+import snw.jkook.message.component.card.element.ButtonElement
+import snw.kookbc.util.GsonUtil
+
+object KtKookExamplePlugin: KtPlugin() {
 
     override fun onEnable() {
-        TODO("Not implemented yet!")
-    }
+        this.logger.info("Hello world!\nKtKook Plugin success!")
 
-}
-
-// 如java一样的类继承的创建方法也是可以正常使用的的：
-class ExampleKtPlugin(): KtPlugin() {
-
-    override fun onEnable() {
-        TODO("Not implemented yet!")
-    }
-
-}
-```
-同时对指令 & 卡片消息通过了 DSL 支持
-```kotlin
-
-object ExampleKtPlugin: KtPlugin() {
-
-    override fun onEnable() {
-        TODO("Not implemented yet!")
-        // 可以通过 KtPlugin 中的 registerCommand(String) 方法直接访问创建指令并通过 DSL 进行开发
         this.registerCommand("test") {
 
             Literal("sub") {
@@ -62,7 +45,6 @@ object ExampleKtPlugin: KtPlugin() {
         }
     }
 
-    // 创建一个卡片消息
     fun cardExample(): MultipleCardComponent {
         val multipleCardComponent = MultipleCardComponent {
             CardComponent {
@@ -141,6 +123,3 @@ object ExampleKtPlugin: KtPlugin() {
     }
 
 }
-```
-以上代码的结果：
-![机器人展示](./screenshots/example.png)
